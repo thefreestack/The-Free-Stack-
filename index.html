@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Free Stack — 50 Premium Resources. One Vault.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080808;
+    --red: #E8180C;
+    --red-dark: #B30F07;
+    --white: #F5F5F0;
+    --grey: #1A1A1A;
+    --grey-mid: #2A2A2A;
+    --grey-light: #888;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+
+/* HERO */
+.hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 24px 40px; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; bottom: -120px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(232,24,12,0.1) 0%, transparent 70%); pointer-events: none; }
+
+.logo-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; animation: fadeUp 0.8s ease both; }
+.logo-icon { width: 72px; height: 72px; background: var(--red); display: grid; place-items: center; position: relative; }
+.logo-icon::before { content: 'FS'; font-family: 'Bebas Neue', sans-serif; font-size: 34px; color: var(--black); letter-spacing: 2px; }
+.logo-icon::after { content: ''; position: absolute; top: 5px; right: 5px; width: 16px; height: 16px; background: var(--black); }
+.logo-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 11vw, 88px); color: var(--red); letter-spacing: 4px; line-height: 0.9; text-align: center; }
+.logo-sub { font-size: 12px; color: var(--white); letter-spacing: 3px; text-transform: uppercase; opacity: 0.6; font-family: 'Space Mono', monospace; }
+
+.hero-headline { margin-top: 48px; text-align: center; animation: fadeUp 0.8s 0.2s ease both; }
+.hero-headline h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(34px, 8vw, 68px); line-height: 1.0; color: var(--white); max-width: 680px; }
+.hero-headline h1 span { color: var(--red); }
+.hero-sub { margin-top: 18px; font-size: 15px; color: var(--grey-light); max-width: 460px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+
+.proof-bar { margin-top: 36px; display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.8s 0.3s ease both; }
+.proof-item { text-align: center; }
+.proof-num { font-family: 'Bebas Neue', sans-serif; font-size: 34px; color: var(--red); line-height: 1; }
+.proof-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grey-light); margin-top: 4px; font-family: 'Space Mono', monospace; }
+
+.cta-wrap { display: flex; flex-direction: column; align-items: center; margin-top: 40px; animation: fadeUp 0.8s 0.4s ease both; gap: 10px; }
+.cta-price-display { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--white); letter-spacing: 2px; }
+.cta-price-display .old { color: var(--grey-light); text-decoration: line-through; margin-right: 10px; }
+.cta-price-display .new { color: var(--red); }
+.cta-primary { display: inline-block; background: #000000; color: var(--white); font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 3px; padding: 16px 44px; text-decoration: none; position: relative; transition: all 0.2s ease; }
+.cta-primary::before { content: ''; position: absolute; inset: 0; border: 2px solid var(--red); transform: translate(5px, 5px); transition: transform 0.2s ease; }
+.cta-primary:hover { background: #111; transform: translate(-2px, -2px); }
+.cta-primary:hover::before { transform: translate(7px, 7px); }
+.cta-note { font-size: 11px; color: var(--grey-light); letter-spacing: 1px; animation: fadeUp 0.8s 0.5s ease both; }
+
+.scroll-hint { margin-top: 56px; display: flex; flex-direction: column; align-items: center; gap: 8px; opacity: 0.35; animation: fadeUp 1s 1s ease both; }
+.scroll-hint span { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; font-family: 'Space Mono', monospace; }
+.scroll-line { width: 1px; height: 36px; background: var(--grey-light); animation: scrollPulse 2s infinite; }
+
+/* SECTIONS */
+.section { padding: 80px 24px; max-width: 900px; margin: 0 auto; }
+.section-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
+.section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(38px, 7vw, 60px); line-height: 1; color: var(--white); margin-bottom: 40px; }
+
+/* FOLDERS */
+.folders-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); gap: 2px; }
+.folder-card { background: var(--grey); padding: 30px 26px; position: relative; overflow: hidden; transition: background 0.2s ease; }
+.folder-card:hover { background: var(--grey-mid); }
+.folder-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--red); }
+.folder-number { font-family: 'Bebas Neue', sans-serif; font-size: 44px; color: rgba(232,24,12,0.12); line-height: 1; position: absolute; top: 18px; right: 18px; }
+.folder-tag { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+.folder-name { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: var(--white); line-height: 1.1; margin-bottom: 8px; }
+.folder-desc { font-size: 13px; color: var(--grey-light); line-height: 1.6; }
+.folder-secret { background: #0D0D0D; border: 1px dashed rgba(232,24,12,0.35); grid-column: 1 / -1; }
+.folder-secret .folder-name { color: var(--red); }
+
+.divider { height: 1px; background: var(--grey); max-width: 900px; margin: 0 auto; }
+
+/* REVIEWS */
+.reviews-section { padding: 80px 24px; max-width: 900px; margin: 0 auto; }
+.folder-review-block { margin-bottom: 60px; }
+.folder-review-header { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; padding-bottom: 14px; border-bottom: 1px solid var(--grey); flex-wrap: wrap; }
+.folder-review-tag { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--black); background: var(--red); padding: 4px 10px; }
+.stars { color: var(--red); font-size: 13px; letter-spacing: 2px; }
+.rating-count { font-size: 11px; color: var(--grey-light); font-family: 'Space Mono', monospace; }
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; }
+.review-card { background: var(--grey); padding: 22px; }
+.review-card.featured { background: #111; border-left: 3px solid var(--red); }
+.review-stars { color: var(--red); font-size: 11px; letter-spacing: 3px; margin-bottom: 10px; }
+.review-text { font-size: 13px; line-height: 1.6; color: var(--white); margin-bottom: 12px; }
+.review-author { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--grey-light); letter-spacing: 1px; text-transform: uppercase; }
+.review-verified { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; color: var(--red); margin-top: 3px; font-family: 'Space Mono', monospace; }
+
+/* WhatsApp testimonials */
+.wa-testimonials { margin-top: 48px; }
+.wa-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--red); margin-bottom: 8px; padding-bottom: 14px; border-bottom: 1px solid var(--grey); }
+.wa-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; margin-top: 20px; }
+.wa-card { background: #0f0f0f; padding: 22px; border-left: 3px solid var(--red); position: relative; }
+.wa-card::after { content: 'VERIFIED · WHATSAPP'; position: absolute; top: 14px; right: 14px; font-family: 'Space Mono', monospace; font-size: 7px; color: var(--red); letter-spacing: 1px; }
+.wa-card .review-text { color: var(--white); font-size: 13px; }
+.wa-card .review-author { color: var(--grey-light); }
+
+/* MID CTA */
+.mid-cta { background: var(--grey); padding: 64px 24px; text-align: center; position: relative; overflow: hidden; }
+.mid-cta::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, rgba(232,24,12,0.03) 0px, rgba(232,24,12,0.03) 1px, transparent 1px, transparent 60px); }
+.mid-cta-inner { position: relative; max-width: 580px; margin: 0 auto; }
+.mid-cta h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(34px, 7vw, 56px); color: var(--white); line-height: 1; margin-bottom: 14px; }
+.mid-cta h2 span { color: var(--red); }
+.mid-cta p { font-size: 14px; color: var(--grey-light); margin-bottom: 20px; line-height: 1.6; }
+.mid-cta-price { font-family: 'Bebas Neue', sans-serif; font-size: 20px; margin-bottom: 20px; }
+.mid-cta-price .old { color: var(--grey-light); text-decoration: line-through; margin-right: 10px; }
+.mid-cta-price .new { color: var(--red); }
+
+/* PRICE */
+.price-section { padding: 80px 24px; max-width: 660px; margin: 0 auto; text-align: center; }
+.price-box { background: var(--grey); padding: 48px 36px; position: relative; border: 1px solid rgba(232,24,12,0.2); }
+.price-box::after { content: ''; position: absolute; inset: -1px; border: 1px solid rgba(232,24,12,0.08); transform: translate(8px, 8px); pointer-events: none; }
+.price-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
+.price-display { margin-bottom: 14px; }
+.price-old { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--grey-light); text-decoration: line-through; display: block; }
+.price-number { font-family: 'Bebas Neue', sans-serif; font-size: 88px; line-height: 1; color: var(--white); }
+.price-number sup { font-size: 38px; vertical-align: super; color: var(--red); }
+.price-desc { font-size: 14px; color: var(--grey-light); margin: 14px 0 28px; line-height: 1.6; }
+.price-features { list-style: none; margin-bottom: 32px; text-align: left; display: inline-block; }
+.price-features li { font-size: 13px; color: var(--white); padding: 7px 0; border-bottom: 1px solid var(--grey-mid); display: flex; align-items: center; gap: 12px; }
+.price-features li::before { content: '—'; color: var(--red); font-family: 'Space Mono', monospace; }
+.price-cta-note { margin-top: 12px; display: block; font-size: 11px; color: var(--grey-light); letter-spacing: 1px; }
+
+/* FINAL CTA */
+.final-cta { background: var(--red); padding: 80px 24px; text-align: center; position: relative; overflow: hidden; }
+.final-cta::before { content: 'THE FREE STACK'; position: absolute; font-family: 'Bebas Neue', sans-serif; font-size: 160px; color: rgba(0,0,0,0.08); white-space: nowrap; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+.final-cta h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(38px, 8vw, 68px); color: var(--black); line-height: 1; margin-bottom: 14px; position: relative; }
+.final-cta p { font-size: 15px; color: rgba(0,0,0,0.55); margin-bottom: 20px; position: relative; }
+.final-price { font-family: 'Bebas Neue', sans-serif; font-size: 22px; margin-bottom: 20px; position: relative; }
+.final-price .old { color: rgba(0,0,0,0.35); text-decoration: line-through; margin-right: 10px; }
+.final-price .new { color: var(--black); }
+.cta-black { display: inline-block; background: #000000; color: var(--white); font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 3px; padding: 16px 48px; text-decoration: none; position: relative; transition: all 0.2s ease; }
+.cta-black:hover { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 rgba(0,0,0,0.25); }
+.final-note { margin-top: 14px; font-size: 11px; color: rgba(0,0,0,0.45); position: relative; font-family: 'Space Mono', monospace; letter-spacing: 1px; }
+
+footer { background: var(--black); padding: 28px 24px; text-align: center; border-top: 1px solid var(--grey); }
+footer p { font-size: 11px; color: var(--grey-light); letter-spacing: 1px; font-family: 'Space Mono', monospace; }
+footer span { color: var(--red); }
+footer a { color: var(--red); text-decoration: none; }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scrollPulse { 0%,100% { opacity:0.3; transform:scaleY(1); } 50% { opacity:1; transform:scaleY(1.3); } }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.1s; } .d2 { transition-delay: 0.2s; } .d3 { transition-delay: 0.3s; }
+
+@media (max-width: 480px) {
+  .proof-bar { gap: 16px; }
+  .price-box { padding: 28px 20px; }
+  .folders-grid, .reviews-grid, .wa-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="logo-wrap">
+    <div class="logo-icon"></div>
+    <div class="logo-name">THE FREE<br>STACK.</div>
+    <div class="logo-sub">50 Premium Resources. One Vault.</div>
+  </div>
+  <div class="hero-headline">
+    <h1>50 resources. <span>₦3,750.</span><br>The free internet,<br>finally organised.</h1>
+    <p class="hero-sub">Everything you need to build, grow, and create — curated from the best free tools on the internet, packaged in one clean vault and delivered instantly. Pay in Naira.</p>
+  </div>
+  <div class="proof-bar">
+    <div class="proof-item"><div class="proof-num">50</div><div class="proof-label">Resources</div></div>
+    <div class="proof-item"><div class="proof-num">6</div><div class="proof-label">Folders</div></div>
+    <div class="proof-item"><div class="proof-num">4.9★</div><div class="proof-label">Avg Rating</div></div>
+    <div class="proof-item"><div class="proof-num">3,800+</div><div class="proof-label">Reviews</div></div>
+  </div>
+  <div class="cta-wrap">
+    <div class="cta-price-display"><span class="old">₦7,500</span><span class="new">₦3,750</span></div>
+    <a href="https://selar.com/676764w678" target="_blank" class="cta-primary">GET INSTANT ACCESS</a>
+    <p class="cta-note">Bank transfer · Card · USSD · Instant delivery via Selar</p>
+  </div>
+  <div class="scroll-hint">
+    <span>See what's inside</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHAT'S INSIDE -->
+<section class="section reveal">
+  <div class="section-label">// What you get</div>
+  <h2 class="section-title">Six folders.<br>Every angle covered.</h2>
+  <div class="folders-grid">
+    <div class="folder-card reveal d1"><div class="folder-number">01</div><div class="folder-tag">Folder 01</div><div class="folder-name">AI &amp; Productivity</div><div class="folder-desc">2,500+ AI prompts, templates, and tools. The complete toolkit to work 10x faster with AI.</div></div>
+    <div class="folder-card reveal d2"><div class="folder-number">02</div><div class="folder-tag">Folder 02</div><div class="folder-name">Money Moves</div><div class="folder-desc">Guides, playbooks, and step-by-step resources to build income online. AI product creation included.</div></div>
+    <div class="folder-card reveal d3"><div class="folder-number">03</div><div class="folder-tag">Folder 03</div><div class="folder-name">Social Media Magic</div><div class="folder-desc">420+ marketing resources covering content creation, strategy, social tools, and SEO — all in one place.</div></div>
+    <div class="folder-card reveal d1"><div class="folder-number">04</div><div class="folder-tag">Folder 04</div><div class="folder-name">Design Power</div><div class="folder-desc">Professional Lightroom presets, Canva tools, and visual creation resources. Look premium for free.</div></div>
+    <div class="folder-card reveal d2"><div class="folder-number">05</div><div class="folder-tag">Folder 05</div><div class="folder-name">Growth Hacks</div><div class="folder-desc">365+ automation templates across Bardeen, Make, Zapier, IFTT, and Whalesync. Automate everything.</div></div>
+    <div class="folder-card folder-secret reveal d3"><div class="folder-number">06</div><div class="folder-tag">Folder 06</div><div class="folder-name">??? Secret Bonus</div><div class="folder-desc">There's a 6th folder. We don't talk about it publicly. You'll understand when you see it.</div></div>
+  </div>
+</section>
+
+<!-- MID CTA -->
+<div class="mid-cta">
+  <div class="mid-cta-inner reveal">
+    <h2>Stop paying for<br><span>tools that should be free.</span></h2>
+    <p>We did the research. We found the resources. We built the vault.<br>You just pay ₦3,750 to get the key.</p>
+    <div class="mid-cta-price"><span class="old">₦7,500</span><span class="new">₦3,750</span></div>
+    <a href="https://selar.com/676764w678" target="_blank" class="cta-primary">UNLOCK THE VAULT</a>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- REVIEWS -->
+<section class="reviews-section">
+  <div class="section-label reveal">// Verified buyer reviews</div>
+  <h2 class="section-title reveal">What people are saying.</h2>
+
+  <!-- AI & Productivity -->
+  <div class="folder-review-block reveal">
+    <div class="folder-review-header">
+      <span class="folder-review-tag">AI &amp; Productivity</span>
+      <span class="stars">★★★★★</span>
+      <span class="rating-count">4.9 · 1,659 reviews</span>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card featured"><div class="review-stars">★★★★★</div><p class="review-text">"An incredible portfolio of prompts. Definitely a must-have — made my work so much easier and less time consuming."</p><div class="review-author">The Digital Vanguard</div><div class="review-verified">✓ Verified Purchase</div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"The best prompts."</p><div class="review-author">Oussama Benabbou</div><div class="review-verified">✓ Verified Purchase</div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Helps me a lot. Keep up the good work."</p><div class="review-author">Kei</div><div class="review-verified">✓ Verified Purchase</div></div>
+    </div>
+  </div>
+
+  <!-- Money Moves -->
+  <div class="folder-review-block reveal">
+    <div class="folder-review-header">
+      <span class="folder-review-tag">Money Moves</span>
+      <span class="stars">★★★★★</span>
+      <span class="rating-count">4.9 · 88 reviews</span>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card featured"><div class="review-stars">★★★★★</div><p class="review-text">"Like having a cheat code for turning your genius ideas into real, sellable products — minus the stress and confusion. Will have you feeling like a tech entrepreneur in no time, minus the imposter syndrome."</p><div class="review-author">Studio Brittany</div><div class="review-verified">✓ Verified Purchase</div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Accessible, easy to learn, great resource!"</p><div class="review-author">Anonymous</div><div class="review-verified">✓ Verified Purchase</div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"This is a precious gift. Thanks a lot."</p><div class="review-author">Anonymous</div><div class="review-verified">✓ Verified Purchase</div></div>
+    </div>
+  </div>
+
+  <!-- Social Media Magic -->
+  <div class="folder-review-block reveal">
+    <div class="folder-review-header">
+      <span class="folder-review-tag">Social Media Magic</span>
+      <span class="stars">★★★★★</span>
+      <span class="rating-count">4.9 · 456 reviews</span>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card featured"><div class="review-stars">★★★★★</div><p class="review-text">"An absolute goldmine for anyone looking to level up their marketing game. 420+ resources — content creation, strategy, social tips and SEO. If you're serious about marketing, this is a must-have."</p><div class="review-author">Studio Brittany</div><div class="review-verified">✓ Verified Purchase</div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Trust you'll find what you're looking for!"</p><div class="review-author">Stephen P Crump</div><div class="review-verified">✓ Verified Purchase</div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Great resource for the money!"</p><div class="review-author">Anonymous</div><div class="review-verified">✓ Verified Purchase</div></div>
+    </div>
+  </div>
+
+  <!-- Design Power -->
+  <div class="folder-review-block reveal">
+    <div class="folder-review-header">
+      <span class="folder-review-tag">Design Power</span>
+      <span class="stars">★★★★★</span>
+      <span class="rating-count">4.8 · 340 reviews</span>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card featured"><div class="review-stars">★★★★★</div><p class="review-text">"Makes editing so much easier — photos look professional without spending hours. Colors pop without looking harsh, and there's a preset for pretty much any vibe you could be going for."</p><div class="review-author">Cassandra Nguyen</div><div class="review-verified">✓ Verified Purchase</div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"I absolutely adore these. Make all my photos look professionally shot!"</p><div class="review-author">Amethyst S.</div><div class="review-verified">✓ Verified Purchase</div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"So shocked this amazing tool was free. Easy to use and great quality!"</p><div class="review-author">Anonymous</div><div class="review-verified">✓ Verified Purchase</div></div>
+    </div>
+  </div>
+
+  <!-- Growth Hacks -->
+  <div class="folder-review-block reveal">
+    <div class="folder-review-header">
+      <span class="folder-review-tag">Growth Hacks</span>
+      <span class="stars">★★★★★</span>
+      <span class="rating-count">4.9 · 692 reviews</span>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card featured"><div class="review-stars">★★★★★</div><p class="review-text">"This is fire 🔥🔥🔥 Thanks mate"</p><div class="review-author">Adewumi Olajide</div><div class="review-verified">✓ Verified Purchase</div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Excellent resource! Highly recommended."</p><div class="review-author">Anonymous</div><div class="review-verified">✓ Verified Purchase</div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Great product. Keep on growing and adding new products."</p><div class="review-author">Paul Mansfield</div><div class="review-verified">✓ Verified Purchase</div></div>
+    </div>
+  </div>
+
+  <!-- Secret Bonus -->
+  <div class="folder-review-block reveal">
+    <div class="folder-review-header">
+      <span class="folder-review-tag" style="background:#111; color:var(--red); border:1px solid var(--red);">Secret Bonus</span>
+      <span class="stars">★★★★★</span>
+      <span class="rating-count">4.9 · 1,226 reviews</span>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card featured"><div class="review-stars">★★★★★</div><p class="review-text">"Amazing — saved me so much time. Thank you!"</p><div class="review-author">Anonymous</div><div class="review-verified">✓ Verified Purchase</div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Did exactly what I needed. Thanks so much for the resource!"</p><div class="review-author">Aliyah Renee</div><div class="review-verified">✓ Verified Purchase</div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><p class="review-text">"Really Handy! You're the best."</p><div class="review-author">Robin Wickens</div><div class="review-verified">✓ Verified Purchase</div></div>
+    </div>
+  </div>
+
+  <!-- WhatsApp testimonials — Chioma, Naza, Janet -->
+  <div class="wa-testimonials reveal">
+    <div class="wa-label">// Direct from buyers — unedited</div>
+    <div class="wa-grid">
+      <div class="wa-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"This library is actually very helpful. It puts everything in one place, so it's easy to see what you need without stress. I like that you can just focus on what you're interested in instead of wasting time going through things you don't need. It's simple, clear and straight to the point."</p>
+        <div class="review-author">Chioma</div>
+        <div class="review-verified">✓ Verified Purchase</div>
+      </div>
+      <div class="wa-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The growth hack and the social media magic really caught my attention, especially the Instagram sections. They have valuable and insightful tips and strategies to offer."</p>
+        <div class="review-author">Naza</div>
+        <div class="review-verified">✓ Verified Purchase</div>
+      </div>
+      <div class="wa-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I personally like the one that includes the Make Money With Instagram Checklist. That particular one tells me exactly how to make money on Instagram. Totally love it."</p>
+        <div class="review-author">Janet</div>
+        <div class="review-verified">✓ Verified Purchase</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICE -->
+<section class="price-section">
+  <div class="price-box reveal">
+    <div class="price-label">// One time. No subscription.</div>
+    <div class="price-display">
+      <span class="price-old">₦7,500</span>
+      <div class="price-number"><sup>₦</sup>3,750</div>
+    </div>
+    <p class="price-desc">One payment. Instant access. Yours forever.<br>No monthly fee. No upsells. No fluff.</p>
+    <ul class="price-features">
+      <li>50 curated premium resources</li>
+      <li>5 organised topic folders</li>
+      <li>1 secret bonus folder</li>
+      <li>Instant delivery with lifetime access</li>
+      <li>Pay via bank transfer, card, or USSD</li>
+    </ul>
+    <a href="https://selar.com/676764w678" target="_blank" class="cta-primary" style="display:block; text-align:center;">GET THE FREE STACK NOW</a>
+    <span class="price-cta-note">Secure checkout via Selar · Instant delivery</span>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>The vault is open.<br>The price won't stay.</h2>
+  <p>50 resources. Delivered instantly. No excuses left.</p>
+  <div class="final-price"><span class="old">₦7,500</span><span class="new">₦3,750</span></div>
+  <a href="https://selar.com/676764w678" target="_blank" class="cta-black">CLAIM YOUR COPY</a>
+  <p class="final-note">Bank transfer · Card · USSD · Instant delivery via Selar</p>
+</div>
+
+<footer>
+  <p><span>THE FREE STACK.</span> &nbsp;·&nbsp; 50 Premium Resources. One Vault. &nbsp;·&nbsp; <a href="https://selar.com/676764w678">selar.com/676764w678</a></p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
